@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgPipesModule } from 'ngx-pipes';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { EditorService } from './shared/editor.service';
 	imports: [
 				BrowserModule, 
 				FormsModule,
+				NgPipesModule,
 				HttpModule
 	],
 	declarations: [

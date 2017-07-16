@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { Books } from './books';
 
 @Injectable()
 export class EditorService {
-	private dataUrl = 'api/data.json';
+	private dataUrl = './assets/data/data.json';
 	books: Books[] = [];
 
 	constructor(private http: Http) {}
 
-	getTodos(): Books[] {
-		return this.books;
+	getTodos(): Observable<Books[]> {
+		return this.http.get(this.dataUrl)		
+										.map(res => res.json())
 	}
 
 	/*getTodos(): any {

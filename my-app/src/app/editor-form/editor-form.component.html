@@ -1,18 +1,9 @@
 <div>
 	<button class="btn btn_create">Добавить&nbsp;запись</button>
-	<span class="">Сортировка по заголовкам</span>
-	<span class="">Сортировка по годам выпуска</span>
+	<span class="">cортировка по заголовкам</span>
+	<span class="">cортировка по годам выпуска</span>
 </div>
-<div class="editor-item">
-	<img class="editor-item__img"
-			 src="assets/img/pride-and-prejudice.jpg" 
-			 alt="">
-	<h2 class="editor-item__title">Yfpdfklk dddd</h2>
-	<p class="editor-item__authors">jkjjkj jkjjkj, jkj jkj </p>
-	<p class="editor-item__add-info">ddsjskjljsd jskjdj sddjlkjsd djlkjsl djlksjd</p>
-	<button class="btn btn_edit">Редактировать</button>
-</div>
-<form class="form"
+<form style="display: none;" class="form"
 			(ngSubmit)="onSubmit(); editorForm.reset()" #editorForm="ngForm">
 	<div class="form__field">	
 		<label class="form__label" for="title">Название&nbsp;книги*:</label>

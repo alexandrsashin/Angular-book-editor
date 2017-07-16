@@ -1,5 +1,5 @@
 export class Authors { 
 	constructor(public firstName?: string, 
-							public secondName?: string, 
+							public lastName?: string, 
 							public patronymicName?: string) {}
 }

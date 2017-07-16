@@ -1,9 +1,13 @@
-<div class="todo-item">
-	<span class="title">{{ book.title }}</span>
-	<div class="actions">
-		<button class="delete icon" 
-					  (click)="onDelete()">
-			<i class="material-icons">delete</i>
-		</button>
-	</div>
+<div class="editor-item">
+	<img class="editor-item__img"
+			 [src]="book.imgSrc" 
+			 alt="{{book.title}}">
+	<h2 class="editor-item__title" [innerHtml]="book.title"></h2>
+	<p class="editor-item__authors"> 
+		<span *ngFor="let author of book.authors; let i = index">
+			{{author.firstName}} {{author.patronymicName ? author.patronymicName + ' ' : ''}}{{author.lastName}}{{i === book.authors.length - 1 ? '' : ', '}}
+		</span> 
+	</p>
+	<p class="editor-item__add-info">{{book.publishingHouse ? book.publishingHouse + ', ' : ''}}{{book.yearOfPublication + '. '}}{{book.pages ? ' - ' + book.pages + ' стр. ' : ''}}{{book.releaseDate ? 'Дата выхода в тираж: ' + book.releaseDate + '. ' : ''}}{{book.ISBN ? 'ISBN: ' + book.ISBN : ''}}</p>
+	<button class="btn btn_edit">Редактировать</button>
 </div>

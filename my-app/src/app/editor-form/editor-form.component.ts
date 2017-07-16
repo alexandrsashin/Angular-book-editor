@@ -48,5 +48,4 @@ export class EditorFormComponent implements OnInit {
   onSubmit() {
 		this.editorService.createTodo(this.title);
 	}
-
 }
