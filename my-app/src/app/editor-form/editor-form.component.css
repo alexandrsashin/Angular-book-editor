@@ -1,0 +1,105 @@
+.editor-item {
+  padding: 10px;
+  box-shadow: 0 1px 4px #d4d4d4;
+}
+.editor-item__title {
+	margin: 0;
+	padding: 4px 0 10px;
+	font: 20px Arial, sans-serif;
+}
+.editor-item__authors {
+	margin: 0 0 10px;
+}
+.editor-item__img {
+	float: right;
+	height: 134px;
+}
+.editor-item__add-info {
+	margin: 0 0 10px;
+	font-size: 14px;
+	font-family: monospace;
+}
+.container {
+  width: 100%;
+}
+.form__fieldset {
+	border: 1px solid #eee;
+}
+.form__fieldset_authors {
+	padding-bottom: 10px;
+}
+.form__field {
+  margin: 10px;
+}
+.form__input-wrapper {
+  position: relative;
+  padding-bottom: 20px;
+}
+.form__label {
+	display: block;
+  font-size: 16px;
+  line-height: 32px;	
+}
+.form__input {
+  width: 100%;
+  height: 32px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 32px;
+}
+.form__input_page-amount {
+	width: 100px;
+}
+.form__input_year {
+	width: 100px;
+}
+.form__input-comment {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.form__href {
+	margin: 10px 20px;
+	font-size: 14px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.form__href:hover {
+	color: rgba(0,0,0,.3);
+}
+.form__btn {
+  display: table-cell;
+  vertical-align: top;
+}
+.btn {
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+@media(min-width: 768px) {
+	.form__field {
+	  display: inline-table;
+	  width: calc(100% - 20px);
+	}
+	.form__field_page-amount,
+	.form__field_year {
+		width: 45%;
+	}
+	.form__input-wrapper {
+	  display: table-cell;
+	  width: 100%;
+	  vertical-align: top;
+	}
+	.form__label {
+		display: inline;
+		padding: 0 10px;
+	}
+}

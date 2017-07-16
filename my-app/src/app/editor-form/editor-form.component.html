@@ -1,0 +1,138 @@
+<div>
+	<button class="btn btn_create">Добавить&nbsp;запись</button>
+	<span class="">Сортировка по заголовкам</span>
+	<span class="">Сортировка по годам выпуска</span>
+</div>
+<div class="editor-item">
+	<img class="editor-item__img"
+			 src="assets/img/pride-and-prejudice.jpg" 
+			 alt="">
+	<h2 class="editor-item__title">Yfpdfklk dddd</h2>
+	<p class="editor-item__authors">jkjjkj jkjjkj, jkj jkj </p>
+	<p class="editor-item__add-info">ddsjskjljsd jskjdj sddjlkjsd djlkjsl djlksjd</p>
+	<button class="btn btn_edit">Редактировать</button>
+</div>
+<form class="form"
+			(ngSubmit)="onSubmit(); editorForm.reset()" #editorForm="ngForm">
+	<div class="form__field">	
+		<label class="form__label" for="title">Название&nbsp;книги*:</label>
+		<div class="form__input-wrapper">
+			<input type="text" 
+						 id="title"
+					   class="form__input" 
+					   name="title" 
+					   maxlength="30"
+					   [(ngModel)]="title"
+					   required>
+			<span class="form__input-comment">Пример: Совершенный код</span>	
+		</div>
+	</div>	
+	<div class="form__fieldset form__fieldset_authors" *ngFor="let author of authorList; let i = index">
+		<div class="form__field">
+			<label class="form__label" for="secondName">Фамилия&nbsp;автора*:</label>
+			<div class="form__input-wrapper">
+				<input type="text" 
+							 id="secondName" 
+						   class="form__input" 
+							 name="secondName{{i}}" 
+							 maxlength="20"
+							 [(ngModel)]="author.secondName" 
+							 required>
+				<span class="form__input-comment">Пример: Макконнелл</span>	
+			</div>
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="firstName">Имя&nbsp;автора*:</label>
+			<div class="form__input-wrapper">
+				<input type="text" 
+							 id="firstName" 
+							 class="form__input" 
+							 name="firstName{{i}}" 
+							 maxlength="20" 
+							 [(ngModel)]="author.firstName" 
+							 required>
+				<span class="form__input-comment">Пример: Стивен</span>	
+			</div>
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="patronymicName">Отчество&nbsp;автора:</label>
+			<div class="form__input-wrapper">
+				<input type="text" 
+							 id="patronymicName" 
+							 class="form__input" 
+							 name="patronymicName{{i}}" 
+							 maxlength="20" 
+							 [(ngModel)]="author.patronymicName">
+				<span class="form__input-comment"></span>	
+			</div>
+		</div>
+		<span class="form__href"
+					[hidden]="i === 0"
+					(click)="onDelete(author)">Удалить&nbsp;данные&nbsp;автора</span>
+		<span class="form__href"
+					[hidden]="i !== authorList.length - 1"
+					(click)="onAdd()">Добавить&nbsp;автора</span>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="publishingHouse">Название&nbsp;издательства:</label>
+		<div class="form__input-wrapper">
+			<input type="text" 
+						 id="publishingHouse" 
+						 class="form__input" 
+						 name="publishingHouse" 
+						 maxlength="30"
+						 [(ngModel)]="publishingHouse">
+			<span class="form__input-comment">Пример: М.: Издательско-торговый дом «Русская Редакция»</span>
+		</div>
+	</div>
+	<div class="form__field form__field_page-amount">
+		<label class="form__label" for="pages">Количество&nbsp;страниц*:</label>
+		<div class="form__input-wrapper">
+			<input type="text" 
+						 id="pages" 
+						 class="form__input form__input_page-amount" 
+						 name="pages" 
+						 maxlength="5"
+						 [(ngModel)]="pages" 
+						 required>
+			<span class="form__input-comment"></span>
+		</div>
+	</div>
+	<div class="form__field form__field_year">
+		<label class="form__label" for="yearOfPublication">Год&nbsp;публикации:</label>
+		<div class="form__input-wrapper">
+			<input type="text" 
+						 id="yearOfPublication" 
+						 class="form__input form__input_year" 
+						 name="yearOfPublication" 
+						 maxlength="4" 
+						 [(ngModel)]="yearOfPublication">
+			<span class="form__input-comment"></span>
+		</div>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="releaseDate">Дата&nbsp;выхода&nbsp;в&nbsp;тираж:</label>
+		<div class="form__input-wrapper">
+			<input type="text" 
+						 id="releaseDate" 
+						 class="form__input" 
+						 name="releaseDate" 
+						 maxlength="10"
+						 [(ngModel)]="releaseDate">
+			<span class="form__input-comment">Пример: 01.01.2005</span>
+		</div>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="ISBN">ISBN:</label>
+		<div class="form__input-wrapper">
+			<input type="text" 
+						 id="ISBN" 
+						 class="form__input" 
+						 name="ISBN" 
+						 [(ngModel)]="ISBN">
+			<span class="form__input-comment">Пример: 5-469-00822-3</span>
+		</div>
+	</div>
+	<input type="file" name="photo" accept="image/*,image/jpeg" (change)="onChange($event)">
+	<button type="submit">Добавить</button>
+</form>

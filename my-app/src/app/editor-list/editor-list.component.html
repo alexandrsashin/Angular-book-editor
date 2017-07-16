@@ -1,0 +1,5 @@
+<div class="todo-list" 
+				 *ngIf="books.length">
+	<editor-item *ngFor="let book of books" [book]="book" 
+						 (delete)="delete($event)"></editor-item>
+</div>
