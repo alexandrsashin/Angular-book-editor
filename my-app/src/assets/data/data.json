@@ -1,0 +1,57 @@
+[{
+	"title": "Совершенный код",
+	"authors": [{
+		"firstName": "Стив",
+		"lastName": "Макконнелл",
+		"patronymicName": ""
+	}],
+	"pages": 896,
+	"publishingHouse": "М.: Издательско-торговый дом «Русская Редакция»",
+	"yearOfPublication": 2005,
+	"releaseDate": "01.01.2005",
+	"ISBN": "5-7502-0064-7",
+	"imgSrc": "assets/img/code-complete.jpg"
+},{
+	"title": "Гордость и предубеждение",
+	"authors": [{
+		"firstName": "Джейн",
+		"lastName": "Остин",
+		"patronymicName": ""
+	}],
+	"pages": 320,
+	"publishingHouse": "ACT",
+	"yearOfPublication": 2011,
+	"releaseDate": "",
+	"ISBN": "978-5-17-066322-4",
+	"imgSrc": "assets/img/pride-and-prejudice.jpg"
+},{
+	"title": "Код да Винчи",
+	"authors": [{
+		"firstName": "Дэн",
+		"lastName": "Браун",
+		"patronymicName": ""
+	}],
+	"pages": 544,
+	"publishingHouse": "ACT",
+	"yearOfPublication": 2013,
+	"releaseDate": "01.01.2013",
+	"ISBN": "978-5-17-080852-6",
+	"imgSrc": "assets/img/code-da-vinci.jpeg"
+},{
+	"title": "Три чашки чая",
+	"authors": [{
+		"firstName": "Грег",
+		"lastName": "Мортенсон",
+		"patronymicName": ""
+	},{
+		"firstName": "Дэвид Оливер",
+		"lastName": "Релин",
+		"patronymicName": ""
+	}],
+	"pages": 864,
+	"publishingHouse": "Эксмо",
+	"yearOfPublication": 2014,
+	"releaseDate": "",
+	"ISBN": "978-5-699-65686-8",
+	"imgSrc": "assets/img/three-cups-of-tea.jpeg"
+}]
