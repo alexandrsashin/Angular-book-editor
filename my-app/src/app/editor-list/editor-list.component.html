@@ -1,14 +1,23 @@
-<div>
-	<button class="btn btn_create">Добавить&nbsp;запись</button>
-	<span class=""
-				(click)="onSort('title')">cортировка по заголовкам</span>
-	<span class=""
-				(click)="onSort('releaseDate')">cортировка по годам выпуска</span>
-</div>
-<div class="editor-list" 
-		 *ngIf="books.length">
-	<editor-item *ngFor="let book of books | arrayFilter:sortParam" 
-							 [book]="book" 
-						   (delete)="delete($event)"> 
-  </editor-item>
+<div [hidden]="getPageState() !== 'view'">
+	<div>
+		<button class="btn btn_create">Добавить&nbsp;запись</button>
+		<span class="sort-tab"
+					[ngClass]="{'sort-tab_toggler-down': sortParam === 'title', 'sort-tab_toggler-up': sortParam === '!title'}"
+					(click)="onSort('title')">
+			cортировка по заголовкам
+		</span>
+		<span class="sort-tab"
+					[ngClass]="{'sort-tab_toggler-down': sortParam === 'releaseDate', 'sort-tab_toggler-up': '!releaseDate'}"
+					(click)="onSort('releaseDate')">
+			cортировка по годам выпуска
+		</span>
+	</div>
+	<div class="editor-list" 
+			 *ngIf="books.length">
+		<editor-item *ngFor="let book of books | arrayFilter:sortParam" 
+								 [book]="book" 
+							   (delete)="delete($event)"
+							   (setPageState)="setPageState($event)"> 
+	  </editor-item>
+	</div>
 </div>

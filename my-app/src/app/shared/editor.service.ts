@@ -5,12 +5,12 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 import { Books } from './books';
 
 @Injectable()
 export class EditorService {
 	private dataUrl = './assets/data/data.json';
+	pageState: string = 'create'; // view - see books list, create - make new signature about book, edit - edit signature
 	books: Books[] = [];
 
 	constructor(private http: Http) {}
@@ -18,30 +18,33 @@ export class EditorService {
 	getTodos(): Observable<Books[]> {
 		return this.http.get(this.dataUrl)		
 										.map(res => res.json())
+										.catch(this.handleError);
 	}
 
-	/*getTodos(): any {
-		return this.http.get(this.dataUrl)
-										.map(res => res.json());/*
-										.toPromise()
-										.then(res => res.json().data)
-										.then(books => this.books = books)
-										.catch(this.handleError);*/
-		//return this.books;
-	//}
+	getPageState() {
+		return this.pageState;
+	}
 
-	createTodo(title: string) {
+	setPageState(state: string) {
+		this.pageState = state;	
+		window.scrollTo(0,0);
+	}
+
+	createBook(title: string) {
 		let book = new Books(title);
 
 		this.books.push(book);
 	}
 
-	deleteTodo(book: Books) {
-		let index = this.books.indexOf(book);
+	deleteBook(books: Books[], item: Books) {
+		let index;
+		this.books = books;
+		index = this.books.indexOf(item);
 
 		if (index > -1) {
 			this.books.splice(index, 1);
 		}
+		return this.books;
 	}
 
 	private handleError(error: any) {

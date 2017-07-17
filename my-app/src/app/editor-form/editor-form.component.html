@@ -1,5 +1,7 @@
 <form class="form"
-			(ngSubmit)="onSubmit(); editorForm.reset()" #editorForm="ngForm">
+			(ngSubmit)="onSubmit(); editorForm.reset()" 
+			[hidden]="getPageState() === 'view'"
+			#editorForm="ngForm">
 	<div class="form__field">	
 		<label class="form__label" for="title">Название&nbsp;книги*:</label>
 		<div class="form__input-wrapper">
@@ -125,5 +127,8 @@
 					 accept="image/*,image/jpeg" 
 					 (change)="onChange($event)">
 	</div>
-	<button type="submit">Добавить</button><button type="submit">Изменить</button>
+	<button class="btn form__btn" 
+					type="submit"
+					[innerHtml]="getPageState() === 'create' ? 'Добавить' : 'Изменить'">
+	</button>
 </form>

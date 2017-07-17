@@ -57,7 +57,20 @@
 }
 .form__btn {
   display: table-cell;
+  margin: 10px 20px;
   vertical-align: top;
+  background: #e4e4e4;
+  border: 1px solid #a9a9a9;
+  box-shadow: 0 2px 1px -1px #999;
+  outline: none;
+}
+.form__btn:hover {
+	color: green;
+	background: #ecebeb;
+	box-shadow: 0 1px 1px -1px #999;
+}
+.form__btn:active {	
+	box-shadow: none;
 }
 .btn {
   padding: 0 14px;

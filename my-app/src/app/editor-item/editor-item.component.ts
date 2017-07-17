@@ -11,8 +11,13 @@ import { Books } from '../shared/books';
 export class EditorItemComponent {
 	@Input() book: Books;
 	@Output() delete = new EventEmitter(); 
+	@Output() setPageState = new EventEmitter();
 
 	onDelete() {
 		this.delete.emit(this.book);
+	}
+
+	onEdit() {
+		this.setPageState.emit('edit');
 	}
 } 

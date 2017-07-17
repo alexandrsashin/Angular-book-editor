@@ -20,15 +20,21 @@ export class EditorFormComponent implements OnInit {
 		this.authorList.push(author);
 	}
 
+	getPageState() {
+		return this.editorService.getPageState();		
+	}
+
+	setPageState(state: string) {
+		this.editorService.setPageState(state);		
+	}
+
   onAdd() {
   	let author = new Authors();
 		this.authorList.push(author);
-		console.log(this.authorList)
   }
 
   onDelete(author: Authors) {
 		let index = this.authorList.indexOf(author);
-		console.log(author)
 
 		if (index > -1) {
 			this.authorList.splice(index, 1);
@@ -46,6 +52,7 @@ export class EditorFormComponent implements OnInit {
   }
 
   onSubmit() {
-		this.editorService.createTodo(this.title);
+  	this.editorService.setPageState('view');
+		this.editorService.createBook(this.title);
 	}
 }

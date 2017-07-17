@@ -16,8 +16,12 @@ export class EditorListComponent implements OnInit {
 		this.books = [];
 	}
 
-	ngOnInit() {
-		this.editorService.getTodos().subscribe(books => this.books = books);
+	ngOnInit() {	
+		if (localStorage.getItem('appData')) {
+			this.books = JSON.parse(localStorage.getItem('appData'));
+		} else {
+			this.editorService.getTodos().subscribe(books => this.books = books);
+		} 
 		this.sortParam = localStorage.getItem('sortParam');
 	}
 
@@ -33,8 +37,17 @@ export class EditorListComponent implements OnInit {
 		}
 		localStorage.setItem('sortParam', this.sortParam);
 	}
+
+	getPageState() {
+		return this.editorService.getPageState();		
+	}
+
+	setPageState(state: string) {
+		this.editorService.setPageState(state);		
+	}
 	
 	delete(book: Books) {
-		this.editorService.deleteTodo(book);
+		let updatedData = this.editorService.deleteBook(this.books, book);
+		localStorage.setItem('appData', JSON.stringify(updatedData));
 	}	
 }

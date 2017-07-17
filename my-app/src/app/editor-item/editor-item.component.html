@@ -9,6 +9,8 @@
 		</span> 
 	</p>
 	<p class="editor-item__add-info">{{book.publishingHouse ? book.publishingHouse + ', ' : ''}}{{book.yearOfPublication + '. '}}{{book.pages ? ' - ' + book.pages + ' стр. ' : ''}}{{book.releaseDate ? 'Дата выхода в тираж: ' + book.releaseDate + '. ' : ''}}{{book.ISBN ? 'ISBN: ' + book.ISBN : ''}}</p>
-	<button class="btn btn_edit">Редактировать</button>
-	<button class="btn btn_delete">Удалить</button>
+	<button class="btn btn_edit"
+					(click)="onEdit()">Редактировать</button>
+	<button class="btn btn_delete"
+					(click)="onDelete()">Удалить</button>
 </div>
