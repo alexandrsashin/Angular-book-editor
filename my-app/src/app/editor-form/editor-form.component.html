@@ -1,9 +1,4 @@
-<div>
-	<button class="btn btn_create">Добавить&nbsp;запись</button>
-	<span class="">cортировка по заголовкам</span>
-	<span class="">cортировка по годам выпуска</span>
-</div>
-<form style="display: none;" class="form"
+<form class="form"
 			(ngSubmit)="onSubmit(); editorForm.reset()" #editorForm="ngForm">
 	<div class="form__field">	
 		<label class="form__label" for="title">Название&nbsp;книги*:</label>
@@ -124,6 +119,11 @@
 			<span class="form__input-comment">Пример: 5-469-00822-3</span>
 		</div>
 	</div>
-	<input type="file" name="photo" accept="image/*,image/jpeg" (change)="onChange($event)">
-	<button type="submit">Добавить</button>
+	<div class="form__field">
+		<input type="file" 
+					 name="photo" 
+					 accept="image/*,image/jpeg" 
+					 (change)="onChange($event)">
+	</div>
+	<button type="submit">Добавить</button><button type="submit">Изменить</button>
 </form>

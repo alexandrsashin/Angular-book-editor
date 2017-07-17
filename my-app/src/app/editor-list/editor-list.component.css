@@ -1,0 +1,22 @@
+.btn {
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn_create {
+	margin: 0 20px;
+  background: #e4e4e4;
+  border: 1px solid #a9a9a9;
+  box-shadow: 0 2px 1px -1px #999;
+  outline: none;
+}
+.btn_create:hover {
+	color: rgba(0,0,0,.6);
+	background: #ecebeb;
+	box-shadow: 0 1px 1px -1px #999;
+}
+.btn_create:active {	
+	box-shadow: none;
+}

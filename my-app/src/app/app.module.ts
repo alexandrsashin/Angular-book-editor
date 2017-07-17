@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgPipesModule } from 'ngx-pipes';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -10,19 +9,20 @@ import { EditorItemComponent } from './editor-item/editor-item.component';
 import { EditorFormComponent } from './editor-form/editor-form.component';
 
 import { EditorService } from './shared/editor.service';
+import { ArrayFilterPipe } from './shared/pipes/arrayFilter/array-filter.pipe';
 
 @NgModule({
 	imports: [
 				BrowserModule, 
 				FormsModule,
-				NgPipesModule,
 				HttpModule
 	],
 	declarations: [
 				AppComponent,
 				EditorListComponent,
 				EditorItemComponent,
-				EditorFormComponent
+				EditorFormComponent,
+				ArrayFilterPipe
 	],
 	providers: [EditorService],
 	bootstrap: [AppComponent]

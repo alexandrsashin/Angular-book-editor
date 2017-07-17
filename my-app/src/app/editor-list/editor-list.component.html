@@ -1,5 +1,14 @@
-<div class="todo-list" 
-				 *ngIf="books.length">
-	<editor-item *ngFor="let book of books | reverse" [book]="book" 
-						 (delete)="delete($event)"></editor-item>
+<div>
+	<button class="btn btn_create">Добавить&nbsp;запись</button>
+	<span class=""
+				(click)="onSort('title')">cортировка по заголовкам</span>
+	<span class=""
+				(click)="onSort('releaseDate')">cортировка по годам выпуска</span>
+</div>
+<div class="editor-list" 
+		 *ngIf="books.length">
+	<editor-item *ngFor="let book of books | arrayFilter:sortParam" 
+							 [book]="book" 
+						   (delete)="delete($event)"> 
+  </editor-item>
 </div>

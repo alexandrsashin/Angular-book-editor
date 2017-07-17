@@ -1,7 +1,7 @@
 <div class="editor-item">
 	<img class="editor-item__img"
-			 [src]="book.imgSrc" 
-			 alt="{{book.title}}">
+			 [src]="book.imgSrc ? book.imgSrc : 'assets/img/default.jpg'" 
+			 alt="{{book.title}}">	
 	<h2 class="editor-item__title" [innerHtml]="book.title"></h2>
 	<p class="editor-item__authors"> 
 		<span *ngFor="let author of book.authors; let i = index">
@@ -10,4 +10,5 @@
 	</p>
 	<p class="editor-item__add-info">{{book.publishingHouse ? book.publishingHouse + ', ' : ''}}{{book.yearOfPublication + '. '}}{{book.pages ? ' - ' + book.pages + ' стр. ' : ''}}{{book.releaseDate ? 'Дата выхода в тираж: ' + book.releaseDate + '. ' : ''}}{{book.ISBN ? 'ISBN: ' + book.ISBN : ''}}</p>
 	<button class="btn btn_edit">Редактировать</button>
+	<button class="btn btn_delete">Удалить</button>
 </div>

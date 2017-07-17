@@ -1,6 +1,9 @@
 .container {
   width: 100%;
 }
+.form {
+	margin-bottom: 20px;
+}
 .form__fieldset {
 	border: 1px solid #eee;
 }
@@ -55,6 +58,13 @@
 .form__btn {
   display: table-cell;
   vertical-align: top;
+}
+.btn {
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
 }
 @media(min-width: 768px) {
 	.form__field {

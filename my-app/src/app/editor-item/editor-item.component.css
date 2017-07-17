@@ -21,3 +21,31 @@
 	font-size: 14px;
 	font-family: monospace;
 }
+.btn {
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn_edit,
+.btn_delete {
+  background: #e4e4e4;
+  border: 1px solid #a9a9a9;
+  box-shadow: 0 2px 1px -1px #999;
+  outline: none;
+}
+.btn_edit:hover {
+	color: green;
+	background: #ecebeb;
+	box-shadow: 0 1px 1px -1px #999;
+}
+.btn_delete:hover {
+	color: red;
+	background: #ecebeb;
+	box-shadow: 0 1px 1px -1px #999;
+}
+.btn_edit:active,
+.btn_delete:active {	
+	box-shadow: none;
+}
