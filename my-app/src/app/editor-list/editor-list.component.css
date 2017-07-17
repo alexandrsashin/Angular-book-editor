@@ -4,7 +4,11 @@
 	width: 100%;
 	margin: 10px 20px;
 	padding-right: 32px;
+	line-height: 32px;
 	cursor: pointer;
+}
+.sort-tab:hover {
+	color: rgba(0,0,0,.5);
 }
 .sort-tab_toogler-down::after {
 	position: absolute;

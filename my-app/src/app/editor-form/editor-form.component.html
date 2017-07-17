@@ -1,6 +1,5 @@
 <form class="form"
-			(ngSubmit)="onSubmit(); editorForm.reset()" 
-			[hidden]="getPageState() === 'view'"
+			(ngSubmit)="onSubmit(); editorForm.reset()"
 			#editorForm="ngForm">
 	<div class="form__field">	
 		<label class="form__label" for="title">Название&nbsp;книги*:</label>
@@ -17,10 +16,10 @@
 	</div>	
 	<div class="form__fieldset form__fieldset_authors" *ngFor="let author of authorList; let i = index">
 		<div class="form__field">
-			<label class="form__label" for="secondName">Фамилия&nbsp;автора*:</label>
+			<label class="form__label" for="secondName{{i}}">Фамилия&nbsp;автора*:</label>
 			<div class="form__input-wrapper">
 				<input type="text" 
-							 id="secondName" 
+							 id="secondName{{i}}" 
 						   class="form__input" 
 							 name="secondName{{i}}" 
 							 maxlength="20"
@@ -30,10 +29,10 @@
 			</div>
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="firstName">Имя&nbsp;автора*:</label>
+			<label class="form__label" for="firstName{{i}}">Имя&nbsp;автора*:</label>
 			<div class="form__input-wrapper">
 				<input type="text" 
-							 id="firstName" 
+							 id="firstName{{i}}" 
 							 class="form__input" 
 							 name="firstName{{i}}" 
 							 maxlength="20" 
@@ -43,10 +42,10 @@
 			</div>
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="patronymicName">Отчество&nbsp;автора:</label>
+			<label class="form__label" for="patronymicName{{i}}">Отчество&nbsp;автора:</label>
 			<div class="form__input-wrapper">
 				<input type="text" 
-							 id="patronymicName" 
+							 id="patronymicName{{i}}" 
 							 class="form__input" 
 							 name="patronymicName{{i}}" 
 							 maxlength="20" 

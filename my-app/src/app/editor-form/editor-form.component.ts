@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { EditorService } from '../shared/editor.service';
 
 import { Authors } from '../shared/authors';
@@ -12,6 +13,16 @@ import { Authors } from '../shared/authors';
 export class EditorFormComponent implements OnInit {
 	title: string = '';
 	authorList: Authors[] = [];
+	/*
+	registerForm = new FormGroup({
+    title: new FormControl(),
+    authors: new FormGroup({
+      firstname: new FormControl(),
+	    lastname: new FormControl(),
+      zip: new FormControl(),
+      city: new FormControl()
+    })
+  });*/
 
   constructor(private editorService: EditorService) { }
 
