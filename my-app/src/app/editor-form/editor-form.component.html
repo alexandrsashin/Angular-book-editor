@@ -1,75 +1,57 @@
 <form class="form"
-			(ngSubmit)="onSubmit(); editorForm.reset()"
-			#editorForm="ngForm">
+			(ngSubmit)="onSubmit(bookForm._value)"
+			[formGroup]="bookForm">
 	<div class="form__field">	
 		<label class="form__label" for="title">Название&nbsp;книги*:</label>
 		<div class="form__input-wrapper">
 			<input type="text" 
 						 id="title"
 					   class="form__input" 
-					   name="title" 
-					   maxlength="30"
-					   [(ngModel)]="title"
-					   required>
-			<span class="form__input-comment">Пример: Совершенный код</span>	
+					   formControlName="title">
+			<span class="form__input-comment">Пример: Совершенный код<span class="form__error" *ngIf="!bookForm.controls.title.valid"> (required)</span></span>	
 		</div>
 	</div>	
-	<div class="form__fieldset form__fieldset_authors" *ngFor="let author of authorList; let i = index">
-		<div class="form__field">
-			<label class="form__label" for="secondName{{i}}">Фамилия&nbsp;автора*:</label>
-			<div class="form__input-wrapper">
-				<input type="text" 
-							 id="secondName{{i}}" 
-						   class="form__input" 
-							 name="secondName{{i}}" 
-							 maxlength="20"
-							 [(ngModel)]="author.secondName" 
-							 required>
-				<span class="form__input-comment">Пример: Макконнелл</span>	
+	<fieldset formArrayName="authors">
+		<div class="form__fieldset form__fieldset_authors" 
+				 *ngFor="let author of bookForm.controls.authors.controls; let i = index">
+			<div [formGroupName]="i">
+				<div class="form__field">
+					<label class="form__label" for="lastName{{i}}">Фамилия&nbsp;автора*:</label>
+					<div class="form__input-wrapper">
+						<input type="text" 
+									 id="lastName{{i}}" 
+								   class="form__input"  
+									 formControlName="lastName">
+						<span class="form__input-comment">Пример: Макконнелл<span class="form__error" *ngIf="!bookForm.controls.authors.controls[i].controls.lastName.valid"> (required, max length is 20 chars)</span></span>	
+					</div>
+				</div>
+				<div class="form__field">
+					<label class="form__label" for="firstName{{i}}">Имя&nbsp;автора*:</label>
+					<div class="form__input-wrapper">
+						<input type="text" 
+									 id="firstName{{i}}" 
+									 class="form__input"  
+									 formControlName="firstName">
+						<span class="form__input-comment">Пример: Стивен<span class="form__error" *ngIf="!bookForm.controls.authors.controls[i].controls.firstName.valid"> (required, max length is 20 chars)</span></span>	
+					</div>
+				</div>
 			</div>
+			<span class="form__href"
+						[hidden]="i === 0"
+						(click)="onDelete(i)">Удалить&nbsp;данные&nbsp;автора</span>
+			<span class="form__href"
+						[hidden]="i !== bookForm.controls.authors.controls.length - 1"
+						(click)="onAdd()">Добавить&nbsp;автора</span>
 		</div>
-		<div class="form__field">
-			<label class="form__label" for="firstName{{i}}">Имя&nbsp;автора*:</label>
-			<div class="form__input-wrapper">
-				<input type="text" 
-							 id="firstName{{i}}" 
-							 class="form__input" 
-							 name="firstName{{i}}" 
-							 maxlength="20" 
-							 [(ngModel)]="author.firstName" 
-							 required>
-				<span class="form__input-comment">Пример: Стивен</span>	
-			</div>
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="patronymicName{{i}}">Отчество&nbsp;автора:</label>
-			<div class="form__input-wrapper">
-				<input type="text" 
-							 id="patronymicName{{i}}" 
-							 class="form__input" 
-							 name="patronymicName{{i}}" 
-							 maxlength="20" 
-							 [(ngModel)]="author.patronymicName">
-				<span class="form__input-comment"></span>	
-			</div>
-		</div>
-		<span class="form__href"
-					[hidden]="i === 0"
-					(click)="onDelete(author)">Удалить&nbsp;данные&nbsp;автора</span>
-		<span class="form__href"
-					[hidden]="i !== authorList.length - 1"
-					(click)="onAdd()">Добавить&nbsp;автора</span>
-	</div>
+	</fieldset>
 	<div class="form__field">
 		<label class="form__label" for="publishingHouse">Название&nbsp;издательства:</label>
 		<div class="form__input-wrapper">
 			<input type="text" 
 						 id="publishingHouse" 
 						 class="form__input" 
-						 name="publishingHouse" 
-						 maxlength="30"
-						 [(ngModel)]="publishingHouse">
-			<span class="form__input-comment">Пример: М.: Издательско-торговый дом «Русская Редакция»</span>
+						 formControlName="publishingHouse">
+			<span class="form__input-comment"><span class="form__error" *ngIf="!bookForm.controls.publishingHouse.valid">(max length is 30 chars)</span></span>
 		</div>
 	</div>
 	<div class="form__field form__field_page-amount">
@@ -77,12 +59,9 @@
 		<div class="form__input-wrapper">
 			<input type="text" 
 						 id="pages" 
-						 class="form__input form__input_page-amount" 
-						 name="pages" 
-						 maxlength="5"
-						 [(ngModel)]="pages" 
-						 required>
-			<span class="form__input-comment"></span>
+						 class="form__input form__input_page-amount" 				 
+						 formControlName="pages">
+			<span class="form__input-comment"><span class="form__error" *ngIf="!bookForm.controls.pages.valid"> (less 10000)</span></span>
 		</div>
 	</div>
 	<div class="form__field form__field_year">
@@ -90,11 +69,10 @@
 		<div class="form__input-wrapper">
 			<input type="text" 
 						 id="yearOfPublication" 
-						 class="form__input form__input_year" 
-						 name="yearOfPublication" 
-						 maxlength="4" 
-						 [(ngModel)]="yearOfPublication">
-			<span class="form__input-comment"></span>
+						 class="form__input form__input_year" 				 
+						 formControlName="yearOfPublication"
+						 maxlength="4">
+			<span class="form__input-comment"><span class="form__error" *ngIf="!bookForm.controls.yearOfPublication.valid">(since 1800)</span></span>
 		</div>
 	</div>
 	<div class="form__field">
@@ -103,10 +81,9 @@
 			<input type="text" 
 						 id="releaseDate" 
 						 class="form__input" 
-						 name="releaseDate" 
-						 maxlength="10"
-						 [(ngModel)]="releaseDate">
-			<span class="form__input-comment">Пример: 01.01.2005</span>
+						 formControlName="releaseDate"
+						 maxlength="10">
+			<span class="form__input-comment">Пример: 01.01.2005<span class="form__error" *ngIf="!bookForm.controls.releaseDate.valid"> (since 01.01.1800)</span></span>
 		</div>
 	</div>
 	<div class="form__field">
@@ -115,19 +92,20 @@
 			<input type="text" 
 						 id="ISBN" 
 						 class="form__input" 
-						 name="ISBN" 
-						 [(ngModel)]="ISBN">
-			<span class="form__input-comment">Пример: 5-469-00822-3</span>
+						 formControlName="ISBN">
+			<span class="form__input-comment">Пример: 5-469-00822-3<span class="form__error" *ngIf="!bookForm.controls.ISBN.valid"> (incorrect ISBN)</span></span>
 		</div>
 	</div>
 	<div class="form__field">
 		<input type="file" 
-					 name="photo" 
+					 class="form__img-input" 
+					 formControlName="imgSrc"
 					 accept="image/*,image/jpeg" 
 					 (change)="onChange($event)">
 	</div>
 	<button class="btn form__btn" 
 					type="submit"
-					[innerHtml]="getPageState() === 'create' ? 'Добавить' : 'Изменить'">
+					[disabled]="bookForm.invalid"
+					[innerHtml]="getEditedPageIndex() === 'create' ? 'Добавить' : 'Изменить'">
 	</button>
 </form>

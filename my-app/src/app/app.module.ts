@@ -11,10 +11,11 @@ import { EditorFormComponent } from './editor-form/editor-form.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { EditorService } from './shared/editor.service';
+import { CustomValidatorService } from './shared/custom-validator.service';
 import { ArrayFilterPipe } from './shared/pipes/arrayFilter/array-filter.pipe';
 
 const appRoutes: Routes = [
-  { path: 'form', component: EditorFormComponent },
+  { path: 'form/:id', component: EditorFormComponent },
   { path: 'list', component: EditorListComponent },
  
   { path: '',   redirectTo: '/list', pathMatch: 'full' },
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
 				NotFoundComponent,
 				ArrayFilterPipe
 	],
-	providers: [EditorService],
+	providers: [EditorService, CustomValidatorService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

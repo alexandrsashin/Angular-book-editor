@@ -10,7 +10,7 @@ import { Books } from './books';
 @Injectable()
 export class EditorService {
 	private dataUrl = './assets/data/data.json';
-	pageState: string = 'create'; // view - see books list, create - make new signature about book, edit - edit signature
+	editPageIndex: number = -1; // -1 - default value (when create new note)
 	books: Books[] = [];
 
 	constructor(private http: Http) {}
@@ -21,19 +21,23 @@ export class EditorService {
 										.catch(this.handleError);
 	}
 
-	getPageState() {
-		return this.pageState;
+	getEditPageIndex() {
+		return this.editPageIndex;
 	}
 
-	setPageState(state: string) {
-		this.pageState = state;	
-		window.scrollTo(0,0);
+	setEditPageIndex(state: number) {
+		this.editPageIndex = state;	
 	}
 
-	createBook(title: string) {
-		let book = new Books(title);
-
+	createBook(book: Books) {
 		this.books.push(book);
+		console.log(this.books)
+	}
+
+	editBook(books: Books[], item: Books) {
+		let index;
+		this.books = books;
+		index = this.books.indexOf(item);
 	}
 
 	deleteBook(books: Books[], item: Books) {

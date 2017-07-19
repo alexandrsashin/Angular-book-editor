@@ -1,12 +1,11 @@
 <div>
-	<button class="btn btn_create">Добавить&nbsp;запись</button>
+	<button class="btn btn_create"
+					(click)="create()">Добавить&nbsp;запись</button>
 	<span class="sort-tab"
-				[ngClass]="{'sort-tab_toggler-down': sortParam === 'title', 'sort-tab_toggler-up': sortParam === '!title'}"
 				(click)="onSort('title')">
 		cортировка по заголовкам
 	</span>
 	<span class="sort-tab"
-				[ngClass]="{'sort-tab_toggler-down': sortParam === 'releaseDate', 'sort-tab_toggler-up': '!releaseDate'}"
 				(click)="onSort('releaseDate')">
 		cортировка по годам выпуска
 	</span>

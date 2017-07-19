@@ -10,14 +10,14 @@ import { Books } from '../shared/books';
 
 export class EditorItemComponent {
 	@Input() book: Books;
-	@Output() delete = new EventEmitter(); 
-	@Output() setPageState = new EventEmitter();
+	//@Output() delete = new EventEmitter(); 
+	@Output() edit = new EventEmitter();
 
 	onDelete() {
-		this.delete.emit(this.book);
+	//	this.delete.emit(this.book);
 	}
 
 	onEdit() {
-		this.setPageState.emit('edit');
+		this.edit.emit(this.book);
 	}
 } 

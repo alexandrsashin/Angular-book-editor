@@ -1,3 +1,6 @@
+fieldset {
+	border: none;
+}
 .container {
   width: 100%;
 }
@@ -51,6 +54,9 @@
 	font-size: 14px;
 	text-decoration: underline;
 	cursor: pointer;
+}
+.form__error {
+	color: red;
 }
 .form__href:hover {
 	color: rgba(0,0,0,.3);
