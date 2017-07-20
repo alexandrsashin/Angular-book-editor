@@ -60,7 +60,8 @@
 			<input type="text" 
 						 id="pages" 
 						 class="form__input form__input_page-amount" 				 
-						 formControlName="pages">
+						 formControlName="pages"
+						 maxlength="5">
 			<span class="form__input-comment"><span class="form__error" *ngIf="!bookForm.controls.pages.valid"> (less 10000)</span></span>
 		</div>
 	</div>
@@ -107,5 +108,9 @@
 					type="submit"
 					[disabled]="bookForm.invalid"
 					[innerHtml]="getEditedPageIndex() === 'create' ? 'Добавить' : 'Изменить'">
+	</button>
+	<button class="btn form__btn" 
+					(click)="cancel()">
+					Отмена
 	</button>
 </form>

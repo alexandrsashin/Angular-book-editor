@@ -15,10 +15,14 @@ export class EditorService {
 
 	constructor(private http: Http) {}
 
-	getTodos(): Observable<Books[]> {
+	getBooks(): Observable<Books[]> {
 		return this.http.get(this.dataUrl)		
 										.map(res => res.json())
 										.catch(this.handleError);
+	}
+
+	setNoteBook(books: Books[]) {
+		this.books = books;
 	}
 
 	getEditPageIndex() {

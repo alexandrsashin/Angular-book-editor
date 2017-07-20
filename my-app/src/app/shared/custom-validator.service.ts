@@ -9,7 +9,7 @@ export class CustomValidatorService {
   static maxValue(max: Number): ValidatorFn {
 	  return (control: FormControl): {[key: string]: any} => {
 	    const input = control.value,
-	          isValid = input > max;
+	          isValid = input <= max;
 	    if (isValid) {
         return { 'maxValue': {max} }
       } else {
@@ -21,7 +21,7 @@ export class CustomValidatorService {
   static minValue(min: Number): ValidatorFn {
 	  return (control: FormControl): {[key: string]: any} => {
 	    const input = control.value,
-	          isValid = input < min;
+	          isValid = input >= min;
 	    if (isValid) {
         return { 'minValue': {min} }
       } else {
@@ -35,6 +35,7 @@ export class CustomValidatorService {
 	    let input = control.value;
 	    input = input.split('.').reverse().join('-');
 	    const isValid = max === '' ? new Date(input) > new Date(max) : new Date(input) > new Date();
+	    console.log(isValid)
 	    if(isValid) {
         return { 'maxDate': {max} }
       } else {

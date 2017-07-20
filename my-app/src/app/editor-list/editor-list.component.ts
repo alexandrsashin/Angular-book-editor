@@ -19,7 +19,8 @@ export class EditorListComponent implements OnInit {
 
 	ngOnInit() {
 		var savedData = JSON.parse(localStorage.getItem('appData'));
-		this.editorService.getTodos().subscribe(books => this.books = books);
+		this.editorService.getBooks().subscribe(books => this.books = books);
+		this.editorService.setNoteBook(this.books);
 		console.log(savedData, this.books)
 		if (savedData && savedData.length > this.books.length) {
 			this.books = JSON.parse(localStorage.getItem('appData'));
@@ -52,7 +53,6 @@ export class EditorListComponent implements OnInit {
 	}
 	
 	delete(book: Books) {
-	console.log(book)
 		let updatedData = this.editorService.deleteBook(this.books, book);
 		localStorage.setItem('appData', JSON.stringify(updatedData));
 	}	

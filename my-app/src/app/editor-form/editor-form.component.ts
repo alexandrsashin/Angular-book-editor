@@ -87,6 +87,10 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/list']);
 	}
 
+	cancel() {
+		this.router.navigate(['/list']);
+	}
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

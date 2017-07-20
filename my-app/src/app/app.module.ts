@@ -15,7 +15,7 @@ import { CustomValidatorService } from './shared/custom-validator.service';
 import { ArrayFilterPipe } from './shared/pipes/arrayFilter/array-filter.pipe';
 
 const appRoutes: Routes = [
-  { path: 'form/:id', component: EditorFormComponent },
+  { path: 'form', component: EditorFormComponent },
   { path: 'list', component: EditorListComponent },
  
   { path: '',   redirectTo: '/list', pathMatch: 'full' },

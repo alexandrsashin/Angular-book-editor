@@ -15,6 +15,6 @@
 	<editor-item *ngFor="let book of books | arrayFilter:sortParam" 
 							 [book]="book" 
 						   (delete)="delete($event)"
-						   (setPageState)="setPageState($event)"> 
+						   (edit)="edit($event)"> 
   </editor-item>
 </div>
